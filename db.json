@@ -1,0 +1,44 @@
+{
+  "blog": [
+    {
+      "id": "2004",
+      "autor": "საბა დ",
+      "title": "ss",
+      "description": "ss",
+      "categories": [
+        "Figma"
+      ],
+      "email": "luka@redberry.ge",
+      "publish_date": "2024-05-31",
+      "image": "Screenshot 2024-03-02 221746.png"
+    },
+    {
+      "id": "3cb9",
+      "autor": "საბა დხხ",
+      "title": "სსსსსს",
+      "description": "სსსსსსსსსსსსს",
+      "categories": [
+        "აპლიკაცია",
+        "ხელოვნური ინტელექტი"
+      ],
+      "email": "luka@redberry.ge",
+      "publish_date": "2024-05-29",
+      "image": "Screenshot 2024-03-02 221746.png"
+    }
+  ],
+  "login-email": [
+    {
+      "id": "11f3",
+      "email": "gigagiorgadze@redberry.ge"
+    },
+    {
+      "id": "8fcf",
+      "email": "gigagiorgadze@redberry.ge"
+    },
+    {
+      "id": "ec1e",
+      "email": "gigagiorgadze@redberry.ge"
+    }
+  ],
+  "categories": []
+}

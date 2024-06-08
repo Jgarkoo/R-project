@@ -1,0 +1,93 @@
+header{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-style: groove;
+    border-width: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.boddy2{
+    background-color: #E4E3EB;
+    display: block;
+}
+
+.boddy2-uper{
+    display: flex;
+    align-items: flex-start;
+    padding-top: 20px;
+    gap: 350px;
+}
+
+.bk-hm{
+    font-size: 25px;
+    margin-left: 50px;
+    padding: 4px 14px 4px 14px;
+    border-style: none;
+    border-radius: 18px;
+    cursor: pointer;
+    &:hover{
+        color: white;
+        background-color: black;
+        transition: 0.3s;
+    }
+}
+
+
+.middle-btn1,
+.middle-btn2,
+.middle-btn3,
+.middle-btn4,
+.middle-btn5,
+.middle-btn6{
+    
+    border-style: none;
+    padding: 6px 12px 6px 12px;
+    border-radius: 16px;
+}
+
+.boddy2-bottom{
+    display: block;
+}
+
+.boddy2-bottom1{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 100px 30px 100px;
+}
+
+.boddy2-bottom2{
+    gap: 10px;
+    display: flex;
+}
+
+#bot-btn1,#bot-btn2{
+    font-size: 35px;
+    padding: 0px 18px 0px 18px;  
+    border-style: none;
+    border-radius: 25px; 
+    background-color: #cbcbcb90;
+    color: #F3F2FA;
+}
+
+#bot-btn1:hover{
+    color: white;
+    background-color: #5D37F3;
+}
+
+#bot-btn2:hover{
+    color: white;
+    background-color: #5D37F3;
+}
+
+.boddy2-bottom3{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    a {
+        color: #5D37F3;
+        text-decoration: none;
+    }
+}

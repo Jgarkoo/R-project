@@ -1,0 +1,162 @@
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-style: groove;
+    border-width: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+
+.lg-btn{
+    padding: 8px 18px 8px 18px;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    background-color: #5D37F3;
+    cursor: pointer;
+    &:hover{
+        color:#5D37F3;
+        background-color: rgb(247, 243, 243);
+        transition: 0.3s;
+    }
+}
+
+
+.boddy{
+    background-color: #E4E3EB;
+    display: block;
+}
+
+.boddy-uper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0px 50px;
+}
+
+.boddy-middle{
+    display: flex;
+    justify-content: center;    
+    gap: 20px;
+    padding-top: 50px;
+    button {
+        cursor: pointer;
+    }
+}
+
+.middle-btn1,
+.middle-btn2,
+.middle-btn3,
+.middle-btn4,
+.middle-btn5,
+.middle-btn6 {
+    border-style: none;
+    padding: 6px 12px 6px 12px;
+    border-radius: 16px;
+}
+
+.boddy-bottom{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 50px;
+    a {
+        color: #5D37F3;
+        text-decoration: none;
+    }
+}
+
+.bottom-boddy-parts{
+    width: 408px;
+}
+
+.lg-window{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.register-btn{
+    margin: 20px 0px 0px 20px; 
+    width: 91%; 
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    background-color: #5D37F3;
+    cursor: pointer;
+    &:hover{
+        color:#5D37F3;
+        background-color: rgb(247, 243, 243);
+        transition: 0.3s;
+    }
+}
+
+
+#email-input{
+    padding: 6px; 
+    margin-left: 20px; 
+    width: 87.8%;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: blue;
+    background-color: rgba(184, 184, 255, 0.193);
+}
+
+.login-window{
+    position: fixed; 
+    width: 440px; 
+    height: 250px; 
+    border-width: 0;
+    border-radius: 15px;
+    background-color: white;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.back-to-hmpg{
+    border-style: none; 
+    background-color: white; 
+    font-size: 15px; 
+    cursor: pointer; 
+    margin: 20px 0px 0px 400px;
+}
+
+.error-email{
+    margin: 5px 0px 0px 20px; 
+    font-size: 12px; 
+    background-color: red;
+    padding: 2px 4px 2px 6px;
+    color: white;
+    border-radius: 8px;
+
+}
+
+.nav-loghmp-btn{
+    margin: 30px 0px 0px 0px; 
+    width: 90%; 
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    background-color: #5D37F3;
+    cursor: pointer;
+    
+}
+
+.back-to-pg{
+    border-style: none; 
+    background-color: white; 
+    font-size: 15px; 
+    cursor: pointer; 
+    margin: 20px 0px 0px 380px;
+}
+

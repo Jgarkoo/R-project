@@ -1,0 +1,175 @@
+<div>
+    <header>
+        <img src="../assets/img/LOGO-02 3.png" style=" width: 150px; height: 24px; " alt="Logo-02">
+    </header>
+    <div class="addblog-boddy">
+        <div class="addblog-boddy-left">
+            <button class="bk-lgpg" routerLink="../loged-homepage">
+                &#8249;
+            </button>
+        </div>
+        <div class="addblog-boddy-middle" [formGroup]="addBlogForm">
+            <h2 style="font-weight: bold;">
+                ბლოგის დამატება
+            </h2>
+            <h5 style="margin-top: 30px; font-weight: bold;">
+                ატვირთეთ ფოტო
+            </h5>
+            <div style="width: 100%;">
+                <div class="add-photo" *ngIf="!potoIsUp; else photoPreview">
+                    <img src="../assets/img/folder-add.png" style="margin-top: 20px;" alt="add-photo">
+                    <h5 style="margin-top: 20px; color: rgb(68, 68, 68);">
+                        ჩააგდეთ ფაილი აქ ან 
+                        <input type="file" id="uploadBtn" (change)="onFileSelected($event)">
+                        <label for="uploadBtn" id="uploadpicture">
+                            აირჩიეთ ფაილი
+                        </label>
+                    </h5>
+                </div>
+                <ng-template #photoPreview>
+                    <div class="photo-preview">
+                        <div style="display: flex; align-items: center;">
+                            <img src="../assets/img/gallery.png" alt="">
+                            <span>{{ image }}</span>
+                        </div>    
+                      <button (click)="cancelFile()">x</button>
+                    </div>
+                  </ng-template>
+            </div>
+            <div style="margin-top: 20px;  display: flex; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column;">
+                    <label style="font-weight: bold;">
+                        ავტორი *
+                    </label>
+                    <input type="text" id="autor" placeholder="შეიყვანეთ ავტორი" formControlName="author"
+                    [ngClass]="{
+                        'default-state': !author.touched,
+                        'invalid-state': author.touched && author.invalid,
+                        'valid-state': author.touched && author.valid
+                    }"
+                    >
+                    <li style="margin-top: 5px;" 
+                    [ngClass]="{
+                        'default-state-req': !author.touched,
+                        'invalid-state-req': author.touched && author.invalid,
+                        'valid-state-req': author.touched && author.valid
+                    }">
+                        მინიმუმ 4 სიმბოლო
+                    </li>
+                    <li [ngClass]="{
+                        'default-state-req': !author.touched,
+                        'invalid-state-req': author.touched && author.invalid,
+                        'valid-state-req': author.touched && author.valid
+                    }">
+                        მინიმუმ ორი სიტყვა
+                    </li>
+                    <li [ngClass]="{
+                        'default-state-req': !author.touched,
+                        'invalid-state-req': author.touched && author.invalid,
+                        'valid-state-req': author.touched && author.valid
+                    }">
+                        მხოლოდ ქართული სიმბოლოები
+                    </li>
+                </div>
+                <div style="display: flex; flex-direction: column; padding-left: 100px;">
+                    <label style="font-weight: bold;">
+                        სათაური *
+                    </label>
+                    <input type="text" id="title" placeholder="შეიყვანეთ სათაური" formControlName="title"
+                    [ngClass]="{
+                        'default-state': !title.touched,
+                        'invalid-state': title.touched && title.invalid,
+                        'valid-state': title.touched && title.valid
+                    }"
+                    >   
+                    <ul style="font-size: 12px; margin-top: 5px;"
+                    [ngClass]="{
+                        'default-state-req': !title.touched,
+                        'invalid-state-req': title.touched && title.invalid,
+                        'valid-state-req': title.touched && title.valid
+                    }"
+                    >
+                        მინიმუმ 2 სიმბოლო
+                    </ul>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-top: 30px;">
+                    <label style="font-weight: bold;">
+                        აღწერა *
+                    </label>
+                    <input type="text" id="descr" placeholder="შეიყვანეთ აღწერა" formControlName="description"
+                    [ngClass]="{
+                        'default-state': !desc.touched,
+                        'invalid-state': desc.touched && desc.invalid,
+                        'valid-state': desc.touched && desc.valid
+                    }"
+                    >
+                    <ul style="font-size: 12px; margin-top: 5px;"
+                    [ngClass]="{
+                        'default-state-req': !desc.touched,
+                        'invalid-state-req': desc.touched && desc.invalid,
+                        'valid-state-req': desc.touched && desc.valid
+                    }"
+                    >
+                        მინიმუმ 2 სიმბოლო
+                    </ul>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-top: 20px;">
+                    <label style="font-weight: bold;">
+                        გამოქვეყნების თარიღი *
+                    </label>
+                    <input type="date" id="update-data" formControlName="publish_date"
+                    [ngClass]="{
+                        'default-state': !date.touched,
+                        'invalid-state': date.touched && date.invalid,
+                        'valid-state': date.touched && date.valid
+                    }"
+                    >
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 98px; margin-top: 20px;">
+                    <label for="categories" style="font-weight: bold;">
+                      კატეგორია *
+                    </label>
+                    <mat-form-field>
+                        <mat-select placeholder="აირჩიეთ კატეგორია" formControlName="categories" multiple>
+                          <mat-option *ngFor="let category of categoriesList" [value]="category">
+                            {{ category.title }}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>                  
+                <div style="display: flex; flex-direction: column; margin-top: 30px;">
+                    <label style="font-weight: bold;">
+                        ელ-ფოსტა
+                    </label>
+                    <input type="email" id="email" placeholder="Example@redberry.ge" formControlName="email"
+                    [ngClass]="{
+                        'default-state': !email.touched,
+                        'invalid-state': email.touched && email.invalid,
+                        'valid-state': email.touched && email.valid
+                    }"
+                    >
+                    <ul style="font-size: 12px; margin-top: 5px;"
+                    [ngClass]="{
+                        'default-state-req': !email.touched,
+                        'invalid-state-req': email.touched && email.invalid,
+                        'valid-state-req': email.touched && email.valid
+                    }"
+                    >
+                        მეილი უნდა მთავრდებოდეს @redberry.ge-ით
+                    </ul>
+                </div>
+            </div>
+            <div style="padding-left: 330px; margin-top: 20px;">
+                <button class="upload-button" type="submit" (click)="addBlog()"
+                [ngStyle]="{'background-color':  addBlogForm.invalid ? '#E4E3EB' : '#5D37F3',
+                }"
+                >
+                    გამოქვეყნება
+                </button>
+            </div>
+            <p *ngIf="successMessage">
+                you have successfuly add blog
+            </p>
+        </div>
+    </div>
+</div>
