@@ -44,12 +44,49 @@ header{
     padding-top: 50px;
 }
 
+.middle-btn1{
+    color: #D6961C; 
+    background-color: #ffba2f23;
+}
+
+.middle-btn2{
+    color: #15C972; 
+    background-color: #1cd67c25;
+}
+
+.middle-btn3{
+    color: #B71FDD; 
+    background-color: #b11cd618;
+}
+
+.middle-btn4{
+    color: #DC2828; 
+    background-color: #fa575725;
+}
+
+.middle-btn5{
+    color: #60BE16; 
+    background-color: #6fcf2527;
+}
+
+.middle-btn6{
+    color: #1AC7A8; 
+    background-color: #08d2ad2a;
+}
+
 .middle-btn1,
 .middle-btn2,
 .middle-btn3,
 .middle-btn4,
 .middle-btn5,
 .middle-btn6 {
+    cursor: pointer;
+    border-style: none;
+    padding: 6px 12px 6px 12px;
+    border-radius: 16px;
+}
+
+.category{
     border-style: none;
     padding: 6px 12px 6px 12px;
     border-radius: 16px;
@@ -71,5 +108,9 @@ header{
         text-decoration: none;
     }
     
+}
+
+button.active {
+    border: 2px solid #000;
 }
 

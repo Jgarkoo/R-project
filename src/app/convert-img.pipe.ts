@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ConvertImgPipe implements PipeTransform {
 
   transform(value: string): string {
-    return `data:image/png;base64,${value}`;
+    return `data:image/png;,${value}`;
   }
 
 }

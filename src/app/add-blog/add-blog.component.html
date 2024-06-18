@@ -30,7 +30,7 @@
                     <div class="photo-preview">
                         <div style="display: flex; align-items: center;">
                             <img src="../assets/img/gallery.png" alt="">
-                            <span>{{ image }}</span>
+                            <span>{{ imgName }}</span>
                         </div>    
                       <button (click)="cancelFile()">x</button>
                     </div>
@@ -126,12 +126,12 @@
                     >
                 </div>
                 <div style="display: flex; flex-direction: column; margin-left: 98px; margin-top: 20px;">
-                    <label for="categories" style="font-weight: bold;">
+                    <label style="font-weight: bold;">
                       კატეგორია *
                     </label>
                     <mat-form-field>
                         <mat-select placeholder="აირჩიეთ კატეგორია" formControlName="categories" multiple>
-                          <mat-option *ngFor="let category of categoriesList" [value]="category">
+                          <mat-option *ngFor="let category of categoriesList" [value]="category.id">
                             {{ category.title }}
                           </mat-option>
                         </mat-select>
@@ -167,9 +167,16 @@
                     გამოქვეყნება
                 </button>
             </div>
-            <p *ngIf="successMessage">
-                you have successfuly add blog
-            </p>
+            <div *ngIf="successMessage" class="accept-window">
+                <div class="lg-window">
+                    <button class="back-to-pg" (click)="hideButton()">
+                        x
+                    </button>
+                    <img src="../assets/img/tick-circle.png" alt="" style="margin-top: 20px;">
+                    <p style="font-size: 20px; font-weight: bold; margin-top: 20px;">ჩანაწი წარმატებით დაემატა</p>
+                    <button class="nav-loghmp-btn" (click)="navigateToLghmpg()">მთავარ გვერდზე დაბრუნება</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

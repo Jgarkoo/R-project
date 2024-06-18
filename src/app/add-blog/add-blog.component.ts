@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { BlogService } from '../service/blog.service';
 import { Blog, categories } from '../model/blog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-blog',
@@ -20,12 +21,14 @@ export class AddBlogComponent implements OnInit {
   })
 
   image:string | null = null;
+  imgName: string | null = null;
   potoIsUp: boolean = false;
+  file: any
 
   categoriesList: any[] = [];
   successMessage: boolean = false;
 
-  constructor(private service: BlogService){}
+  constructor(private blogService: BlogService, private router: Router){}
 
   ngOnInit(): void {
     this.getCategory();
@@ -35,14 +38,24 @@ export class AddBlogComponent implements OnInit {
     if(!this.addBlogForm.valid){
       return;
     }
+    
+    const fd = new FormData();
+    fd.append('author', `${this.addBlogForm.get('author')!.value}`)
+    fd.append('title', `${this.addBlogForm.get('title')!.value}`)
+    fd.append('description', `${this.addBlogForm.get('description')!.value}`)
+    fd.append('categories', JSON.stringify(this.addBlogForm.get('categories')!.value))
+    fd.append('publish_date', `${this.addBlogForm.get('publish_date')!.value}`)
+    fd.append('email',`${this.addBlogForm.get('email')!.value}`)
 
-    const request : any = this.addBlogForm.value;
-    request.image = this.image || '';
+    if (this.file) {
+      fd.append('image', this.file);
+      console.log(this.file);
+    }
 
-    this.service.createNewBlog(request).subscribe({next: (res) =>{
+    this.blogService.createNewBlog(fd).subscribe({next: (res) =>{
       this.addBlogForm.reset();
       this.image = null;
-      this.successMessage = true; 
+      this.successMessage = true;
       setTimeout(() =>{
         this.successMessage = false;
       }, 3000);
@@ -55,7 +68,7 @@ export class AddBlogComponent implements OnInit {
   }
 
   getCategory() {
-    this.service.getCategories().subscribe({ next: (res: any) => {
+    this.blogService.getCategories().subscribe({ next: (res: any) => {
         this.categoriesList = res.data;
         
       },
@@ -66,17 +79,19 @@ export class AddBlogComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.image = file.name;
+    this.file = event.target.files[0];
+    if (this.file) {
+      this.imgName = this.file.name;
       this.potoIsUp = true;
     }
     const reader = new FileReader();
-    reader.onload = () => {
-      const base64String = btoa(reader.result as string);
-      this.image = base64String;
+    reader.onload = (res) => {
+      if(res.target){
+        this.image = res.target.result as string;
+      }
+      
     };
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(this.file);
   }
 
   cancelFile() {
@@ -85,7 +100,14 @@ export class AddBlogComponent implements OnInit {
     (document.getElementById('uploadBtn') as HTMLInputElement).value = '';
   }
 
-  
+  hideButton() {
+    this.successMessage = !this.successMessage;
+  }
+
+  navigateToLghmpg() {
+    this.router.navigate(['/loged-homepage']);
+  }
+
   get author(){
     return this.addBlogForm.controls['author']
   } 

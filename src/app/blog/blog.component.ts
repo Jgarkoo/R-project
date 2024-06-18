@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../service/blog.service';
 import { Blog, categories } from '../model/blog';
 
@@ -10,26 +10,34 @@ import { Blog, categories } from '../model/blog';
 })
 export class BlogComponent implements OnInit {
   id: string = '';
+  category: any[] = [];
   blog: any = {};
-  constructor(private route: ActivatedRoute, private service: BlogService) {
+  source: string = '';
+  
+  constructor(private route: ActivatedRoute, private router: Router, private blogService: BlogService) {
     this.id = this.route.snapshot.paramMap.get('id') || ' ';
   }
 
   ngOnInit(): void {
-  //   this.service.getSingleBlog(this.id).subscribe((res) =>{
-  //     this.blog = res;
-  //   },
-  //   (error) =>{
-  //     console.log(error);
-      
-  //   }
-  // )
-  this.service.getSingleBlog(this.id).subscribe({next: (res: Blog[]) =>{
-    this.blog = res;
-  },
-  error: (error) =>{
-    console.log(error);
+    this.catchSingleBlog();
+    this.source = this.route.snapshot.queryParamMap.get('source') || 'home';
   }
-})
+
+  catchSingleBlog(){
+    this.blogService.getSingleBlog(this.id).subscribe({next: (res: any) =>{
+      this.blog = res;
+    },
+    error: (error) =>{
+      console.log(error);
+    }
+  })
+}
+  
+goBack() {
+  if (this.source === 'loged-homepage') {
+    this.router.navigate(['/loged-homepage']);
+  } else {
+    this.router.navigate(['/home']);
   }
+}
 }

@@ -4,25 +4,28 @@
     </header>
     <div class="boddy2">
         <div class="boddy2-uper">
-            <button class="bk-hm" routerLink="../home">
+            <button class="bk-hm" (click)="goBack()">
                 &#8249;
             </button>
             <div style="width: 720px;">
-                <img [src]="blog.image | convertImg " alt="Converted Image">
+                <img [src]="blog.image" alt="Converted Image" style=" width: 720px; height: 328px;">
                 <h4 style=" padding-top: 20px; font-weight: bold;">
-                    {{blog.autor}}
+                    {{blog.author}}
                 </h4>
                 <h6 style="color: grey;">
-                    {{blog.publish_date}}
+                    {{blog.publish_date}} • {{blog.email}}
                 </h6>
                 <h2 style="font-weight: bold;">
                     {{blog.title}} 
                 </h2>
                 <div style="display: flex; gap: 15px;">
-                    <button style=" color: #D6961C; background-color: #ffba2f23;" class="middle-btn1">
-                        {{blog.categories}}
+                    <button class="categories" *ngFor="let category of blog.categories"
+                    [ngStyle]="{
+                        'color': category.text_color, 
+                        'background-color': category.background_color}"
+                    >
+                        {{category.title}}
                     </button>
-                    
                 </div>
                 <h5 style="color: grey; padding-top: 20px;">
                     {{blog.description}}

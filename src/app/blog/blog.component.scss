@@ -42,7 +42,12 @@ header{
 .middle-btn4,
 .middle-btn5,
 .middle-btn6{
-    
+    border-style: none;
+    padding: 6px 12px 6px 12px;
+    border-radius: 16px;
+}
+
+.categories{
     border-style: none;
     padding: 6px 12px 6px 12px;
     border-radius: 16px;

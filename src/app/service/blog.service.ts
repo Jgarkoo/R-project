@@ -23,7 +23,7 @@ export class BlogService {
     return this.http.post(`${this.blogURL}/login`, data);
   }
 
-  createNewBlog(data: any): Observable<any>{
+  createNewBlog(data: FormData): Observable<any>{
     return this.http.post(`${this.blogURL}/blogs`, data);
   }
 
@@ -31,11 +31,12 @@ export class BlogService {
     return this.http.get(`${this.blogURL}/blogs`);
   }
 
-  getSingleBlog(id: string): Observable<Blog[]>{
-    return this.http.get<Blog[]>(`${this.blogURL}/blogs/${id}`);
+  getSingleBlog(id: string): Observable<any>{
+    return this.http.get(`${this.blogURL}/blogs/${id}`);
   }
 
   getCategories(): Observable<any>{
     return this.http.get(`${this.blogURL}/categories`);
   }
+
 }

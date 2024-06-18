@@ -13,175 +13,64 @@
             <img src="../assets/img/Blog.png" alt="Blog">
         </div>
         <div class="boddy-middle">
-            <button style="color: #D6961C; background-color: #ffba2f23;" class="middle-btn1">
+            <button (click)="filterByCategory('მარკეტი')" 
+            [ngClass]="{'active': selectedCategories.has('მარკეტი')}" 
+            class="middle-btn1">
                 მარკეტი
             </button>
-            <button style="color: #15C972; background-color: #1cd67c25;" class="middle-btn2">
+            <button (click)="filterByCategory('აპლიკაცია')" 
+            [ngClass]="{'active': selectedCategories.has('აპლიკაცია')}" 
+            class="middle-btn2">
                 აპლიკაცია
             </button>
-            <button style="color: #B71FDD; background-color: #b11cd618;" class="middle-btn3">
+            <button (click)="filterByCategory('ხელოვნური ინტელექტი')" 
+            [ngClass]="{'active': selectedCategories.has('ხელოვნური ინტელექტი')}" 
+            class="middle-btn3">
                 ხელოვნური ინტელექტი
             </button>
-            <button style="color: #DC2828; background-color: #fa575725;" class="middle-btn4">
+            <button (click)="filterByCategory('UI/UX')" 
+            [ngClass]="{'active': selectedCategories.has('UI/UX')}" 
+            class="middle-btn4">
                 UI/UX
             </button>
-            <button style="color: #60BE16; background-color: #6fcf2527;" class="middle-btn5">
+            <button (click)="filterByCategory('კვლევა')" 
+            [ngClass]="{'active': selectedCategories.has('კვლევა')}" 
+            class="middle-btn5">
                 კვლევა
             </button>
-            <button style="color: #1AC7A8; background-color: #08d2ad2a;"class="middle-btn6">
+            <button (click)="filterByCategory('Figma')" 
+            [ngClass]="{'active': selectedCategories.has('Figma')}" 
+            class="middle-btn6">
                 Figma
-            </button>
-        </div>
-        <div class="boddy-bottom">
-            <div class="bottom-boddy-parts">
-                <img src="../assets/img/unsplash.png" alt="unsplash">
-                <h4 style="padding-top: 10px; font-weight: bold;">
-                    ნია გოგსაძე
-                </h4>
-                <h5 style="color: grey;">
-                    02.11.2023
-                </h5>
-                <h3 style="font-weight: bold;">
-                    EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
-                </h3>
-                <div style="display: flex; gap: 15px;">
-                    <button style="color: #D6961C; background-color: #ffba2f23;" class="middle-btn1">
-                        მარკეტი
-                    </button>
-                    <button style="color: #15C972; background-color: #1cd67c25;" class="middle-btn2">
-                        აპლიკაცია
-                    </button>
-                    <button style="color: #B71FDD; background-color: #b11cd618;" class="middle-btn3">
-                        ხელოვნური ინტელექტი
-                    </button>
-                </div>
-                <h4 style="padding: 10px 0px 0px 0px;">
-                    6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                </h4>
-                <a href="./blog"> სრულად ნახვა &#8599;</a>
-            </div>
-            <div class="bottom-boddy-parts">
-                <img src="../assets/img/unsplash.png" alt="unsplash">
+            </button>      
+          </div>
+        <div class="boddy-bottom"  *ngIf="filteredBlogData.length > 0">
+            <div class="bottom-boddy-parts" *ngFor="let blog of filteredBlogData">
+                <img  [src]="blog.image" alt="blog image" style="width: 408px; height: 328px;"/>
                 <h4 style="font-weight: bold; padding-top: 10px;">
-                    ნია გოგსაძე
+                    {{ blog.author }}
                 </h4>
                 <h5 style="color: grey;">
-                    02.11.2023
+                    {{ blog.publish_date }}
                 </h5>
                 <h3 style="font-weight: bold;">
-                    EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
+                    {{ blog.title }}
                 </h3>
-                <div style="display: flex; gap: 15px;">
-                    <button style="color: #DC2828; background-color: #fa575725;" class="middle-btn4">
-                        UI/UX
-                    </button>
-                    <button style="color: #60BE16; background-color: #6fcf2527;" class="middle-btn5">
-                        კვლევა
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button  class="category" *ngFor="let category of blog.categories"
+                    [ngStyle]="{
+                        'color': category.text_color, 
+                        'background-color': category.background_color
+                        }"
+                        >
+                        {{  category.title }}
                     </button>
                 </div>
                 <h4 style="padding: 10px 0px 0px 0px;">
-                    6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
+                    {{ blog.description }}
                 </h4>
-                <a href="./blog"> სრულად ნახვა &#8599;</a>
-            </div>
-            <div class="bottom-boddy-parts">
-                <img src="../assets/img/unsplash.png" alt="unsplash">
-                <h4 style="padding-top: 10px; font-weight: bold;">
-                    ნია გოგსაძე
-                </h4>
-                <h5 style="color: grey;">
-                    02.11.2023
-                </h5>
-                <h3 style="font-weight: bold;">
-                    EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
-                </h3>
-                <div style="display: flex; gap: 15px;">
-                    <button style="color: #DC2828; background-color: #fa575725;" class="middle-btn4">
-                        UI/UX
-                    </button>
-                    <button style="color: #1AC7A8; background-color: #08d2ad2a;"class="middle-btn6">
-                        Figma
-                    </button>
-                </div>
-                <h4 style="padding: 10px 0px 0px 0px;">
-                    6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                </h4>
-                <a href="./blog"> სრულად ნახვა &#8599;</a>
-            </div>
-            <div class="bottom-boddy-parts">
-                <img src="../assets/img/unsplash.png" alt="unsplash">
-                <h4 style="padding-top: 10px; font-weight: bold;">
-                    ნია გოგსაძე
-                </h4>
-                <h5 style="color: grey;">
-                    02.11.2023
-                </h5>
-                <h3 style="font-weight: bold;">
-                    EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
-                </h3>
-                <div style="display: flex; gap: 15px;">
-                    <button style="color: #D6961C; background-color: #ffba2f23;" class="middle-btn1">
-                        მარკეტი
-                    </button>
-                    <button style="color: #15C972; background-color: #1cd67c25;" class="middle-btn2">
-                        აპლიკაცია
-                    </button>
-                    <button style="color: #B71FDD; background-color: #b11cd618;" class="middle-btn3">
-                        ხელოვნური ინტელექტი
-                    </button>
-                </div>
-                <h4 style="padding: 10px 0px 0px 0px;">
-                    6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                </h4>
-                <a href="./blog"> სრულად ნახვა &#8599;</a>
-            </div>
-            <div class="bottom-boddy-parts">
-                <img src="../assets/img/unsplash.png" alt="unsplash">
-                <h4 style="font-weight: bold; padding-top: 10px;">
-                    ნია გოგსაძე
-                </h4>
-                <h5 style="color: grey;">
-                    02.11.2023
-                </h5>
-                <h3 style="font-weight: bold;">
-                    EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
-                </h3>
-                <div style="display: flex; gap: 15px;">
-                    <button style="color: #DC2828; background-color: #fa575725;" class="middle-btn4">
-                        UI/UX
-                    </button>
-                    <button style="color: #1AC7A8; background-color: #08d2ad2a;"class="middle-btn6">
-                        Figma
-                    </button>
-                </div>
-                <h4 style="padding: 10px 0px 0px 0px;">
-                    6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                </h4>
-                <a href="./blog"> სრულად ნახვა &#8599;</a>
-            </div>
-            <ng-container *ngFor="let blog of blogData">
-                <div class="bottom-boddy-parts">
-                    <img  [src]="blog.image | convertImg" alt="" />
-                    <h4 style="font-weight: bold; padding-top: 10px;">
-                        {{blog.autor}}
-                    </h4>
-                    <h5 style="color: grey;">
-                        {{blog.publish_date}}
-                    </h5>
-                    <h3 style="font-weight: bold;">
-                        {{blog.title}}
-                    </h3>
-                    <div style="display: flex; gap: 15px;">
-                        <button style="color: #DC2828; background-color: #fa575725;" class="middle-btn4">
-                            {{blog.categories}}
-                        </button>
-                    </div>
-                    <h4 style="padding: 10px 0px 0px 0px;">
-                        {{blog.description}}
-                    </h4>
-                    <a [routerLink]="['/blog', blog.id]"> სრულად ნახვა &#8599;</a>
-                </div>
-            </ng-container>
+                <a [routerLink]="['/blog', blog.id]" [queryParams]="{ source: 'loged-homepage' }"> სრულად ნახვა &#8599;</a>
+            </div>  
         </div>
     </div>
 </div>
