@@ -22,7 +22,6 @@ export class LogedinComponent implements OnInit{
     this.blogService.getBlog().subscribe({ next: (res: any) => {
         this.blogData = res.data;
         this.filteredBlogData = res.data; 
-        this.filterBlogs();
       },
       error: (err) => {
         console.error(err);
