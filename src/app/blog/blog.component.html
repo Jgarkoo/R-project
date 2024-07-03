@@ -37,93 +37,31 @@
                 <h2 style="font-size: 25px; font-weight: bold;">
                     მზგავსი სტატიები
                 </h2>
-                <div class="boddy2-bottom2">
-                    <button id="bot-btn1">
-                        &#8249;
-                    </button>
-                    <button id="bot-btn2">
-                        &#8250;
-                    </button>
-                </div>
             </div>
             <div class="boddy2-bottom3">
-                <div style="width: 408px;">
-                    <img src="../assets/img/unsplash.png" alt="unsplash">
+                <div *ngFor="let relatedBlog of relatedBlogs">
+                    <img [src]="relatedBlog.image" style="width: 408px; height: 320px;" alt="Related Blog Image">
                     <h4 style="padding-top: 10px; font-weight: bold;">
-                        ნია გოგსაძე
+                      {{ relatedBlog.author }}
                     </h4>
                     <h5 style="color: grey;">
-                        02.11.2023
+                      {{ relatedBlog.publish_date }}
                     </h5>
                     <h3 style="font-weight: bold;">
-                        EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
+                      {{ relatedBlog.title }}
                     </h3>
-                    <div style="display: flex; gap: 15px;">
-                        <button style="color: #D6961C; background-color: #ffba2f23;" class="middle-btn1">
-                            მარკეტი
-                        </button>
-                        <button style="color: #15C972; background-color: #1cd67c25;" class="middle-btn2">
-                            აპლიკაცია
-                        </button>
-                        <button style="color: #B71FDD; background-color: #b11cd618;" class="middle-btn3">
-                            ხელოვნური ინტელექტი
-                        </button>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                      <button *ngFor="let categoryOfBlogs of relatedBlog.categories" class="category"
+                        [ngStyle]="{'color': categoryOfBlogs.text_color, 
+                        'background-color': categoryOfBlogs.background_color
+                        }">
+                        {{ categoryOfBlogs.title }}
+                      </button>
                     </div>
                     <h4 style="padding: 10px 0px 0px 0px;">
-                        6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                    </h4>
-                    <a href="./blog"> სრულად ნახვა &#8599;</a>  
-                </div>
-                <div style="width: 408px;">
-                    <img src="../assets/img/unsplash.png" alt="unsplash">
-                    <h4 style="padding-top: 10px; font-weight: bold;">
-                        ნია გოგსაძე
-                    </h4>
-                    <h5 style="color: grey;">
-                        02.11.2023
-                    </h5>
-                    <h3 style="font-weight: bold;">
-                        EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
-                    </h3>
-                    <div style="display: flex; gap: 15px;">
-                        <button style="color: #15C972; background-color: #1cd67c25;" class="middle-btn2">
-                            აპლიკაცია
-                        </button>
-                        <button style="color: #B71FDD; background-color: #b11cd618;" class="middle-btn3">
-                            ხელოვნური ინტელექტი
-                        </button>
-                    </div>
-                    <h4 style="padding: 10px 0px 0px 0px;">
-                        6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                    </h4>
-                    <a href="./blog"> სრულად ნახვა &#8599;</a>  
-                </div>
-                <div style="width: 408px;">
-                    <img src="../assets/img/unsplash.png" alt="unsplash">
-                    <h4 style="padding-top: 10px; font-weight: bold;">
-                        ნია გოგსაძე
-                    </h4>
-                    <h5 style="color: grey;">
-                        02.11.2023
-                    </h5>
-                    <h3 style="font-weight: bold;">
-                        EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა
-                    </h3>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <button style="color: #15C972; background-color: #1cd67c25;" class="middle-btn2">
-                            აპლიკაცია
-                        </button>
-                        <button style="color: #DC2828; background-color: #fa575725;" class="middle-btn4">
-                            UI/UX
-                        </button>
-                        <button style="color: #60BE16; background-color: #6fcf2527;" class="middle-btn5">
-                            კვლევა
-                        </button> 
-                    </div>
-                    <h4 style="padding: 10px 0px 0px 0px;">
-                        6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...
-                    </h4>
-                    <a href="./blog"> სრულად ნახვა &#8599;</a>  
+                      {{ relatedBlog.description }}
+                    </h4> 
+                  <a [routerLink]="['/blog', relatedBlog.id]"> სრულად ნახვა &#8599;</a> 
                 </div>
             </div>
         </div>

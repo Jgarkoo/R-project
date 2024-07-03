@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
       this.filterBlogs();
     },
     error: (err) =>{
-      console.error('Error fetching blogs:', err);
+      console.error(err);
     }
   })
   }

@@ -22,29 +22,17 @@ header{
 }
 
 .bk-hm{
-    font-size: 25px;
+    font-size: 30px;
     margin-left: 50px;
-    padding: 4px 14px 4px 14px;
+    padding: 4px 18px 6px 18px;
     border-style: none;
-    border-radius: 18px;
+    border-radius: 25px;
     cursor: pointer;
     &:hover{
         color: white;
         background-color: black;
         transition: 0.3s;
     }
-}
-
-
-.middle-btn1,
-.middle-btn2,
-.middle-btn3,
-.middle-btn4,
-.middle-btn5,
-.middle-btn6{
-    border-style: none;
-    padding: 6px 12px 6px 12px;
-    border-radius: 16px;
 }
 
 .categories{
@@ -63,36 +51,23 @@ header{
     padding: 60px 100px 30px 100px;
 }
 
-.boddy2-bottom2{
-    gap: 10px;
-    display: flex;
-}
-
-#bot-btn1,#bot-btn2{
-    font-size: 35px;
-    padding: 0px 18px 0px 18px;  
-    border-style: none;
-    border-radius: 25px; 
-    background-color: #cbcbcb90;
-    color: #F3F2FA;
-}
-
-#bot-btn1:hover{
-    color: white;
-    background-color: #5D37F3;
-}
-
-#bot-btn2:hover{
-    color: white;
-    background-color: #5D37F3;
-}
-
 .boddy2-bottom3{
     display: flex;
-    justify-content: center;
     gap: 40px;
+    overflow-x: auto;  
+    width: 88%;
+    padding: 0px 0px 0px 40px;
     a {
         color: #5D37F3;
         text-decoration: none;
     }
+    &::-webkit-scrollbar{
+        width: 0;
+    }
+}
+
+.category{
+    border-style: none;
+    padding: 6px 12px 6px 12px;
+    border-radius: 16px;
 }

@@ -9,10 +9,12 @@ import { Blog, categories } from '../model/blog';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  id: string = '';
-  category: any[] = [];
+  
+  id: any 
+  blogs: any[] = [];
   blog: any = {};
   source: string = '';
+  relatedBlogs: any[] = [];
   
   constructor(private route: ActivatedRoute, private router: Router, private blogService: BlogService) {
     this.id = this.route.snapshot.paramMap.get('id') || ' ';
@@ -26,18 +28,38 @@ export class BlogComponent implements OnInit {
   catchSingleBlog(){
     this.blogService.getSingleBlog(this.id).subscribe({next: (res: any) =>{
       this.blog = res;
+      this.catchSameBlog();
     },
     error: (error) =>{
       console.log(error);
     }
   })
 }
-  
-goBack() {
-  if (this.source === 'loged-homepage') {
-    this.router.navigate(['/loged-homepage']);
-  } else {
-    this.router.navigate(['/home']);
-  }
+
+  catchSameBlog(){
+    this.blogService.getBlog().subscribe({next: (res: any) =>{
+      this.blogs = res.data;
+      this.filterRelatedBlog();
+    },
+    error: (err) =>{
+      console.log(err);
+    
+    }
+  })
 }
+
+  filterRelatedBlog(){
+    const categoryIds = this.blog.categories.map((category: any) => category.id);
+    this.relatedBlogs = this.blogs.filter((blog: any) => {
+      return blog.categories.some((category: any) => categoryIds.includes(category.id));
+    });
+}
+
+  goBack() {
+    if (this.source === 'loged-homepage') {
+      this.router.navigate(['/loged-homepage']);
+    } else {
+      this.router.navigate(['/home']);
+    } 
+  }
 }
