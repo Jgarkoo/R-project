@@ -62,4 +62,18 @@ export class BlogComponent implements OnInit {
       this.router.navigate(['/home']);
     } 
   }
+
+  currentSlideIndex: number = 0;
+
+  nextSlide(): void {
+    if (this.currentSlideIndex < this.blogs.length - 1) {
+      this.currentSlideIndex++;
+    }
+  }
+
+  prevSlide(): void {
+    if (this.currentSlideIndex > 0) {
+      this.currentSlideIndex--;
+    }
+  }
 }

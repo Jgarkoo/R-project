@@ -51,13 +51,36 @@ header{
     padding: 60px 100px 30px 100px;
 }
 
-.boddy2-bottom3{
+.boddy2-bottom2{
+    gap: 10px;
     display: flex;
-    gap: 40px;
-    overflow-x: auto;  
-    width: 88%;
+}
+
+#bot-btn1,#bot-btn2{
+    font-size: 30px;
+    padding: 0px 20px 1px 20px;
+    border-style: none;
+    border-radius: 30px;
+    background-color: #cbcbcb90;
+    color: #F3F2FA;
+    cursor: pointer;
+}
+
+#bot-btn1:hover{
+    color: white;
+    background-color: #5D37F3;
+}
+
+#bot-btn2:hover{
+    color: white;
+    background-color: #5D37F3;
+}
+
+.boddy2-bottom3{
+    display: block;
+    width: 88%; 
     padding: 0px 0px 0px 40px;
-    a {
+        a {
         color: #5D37F3;
         text-decoration: none;
     }

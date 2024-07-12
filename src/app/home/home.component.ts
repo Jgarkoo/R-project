@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BlogService } from '../service/blog.service';
@@ -9,7 +9,7 @@ import { Blog, categories } from '../model/blog';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy{
   
   showLogIn: boolean = false;
   successMessage: boolean = false;
@@ -29,12 +29,21 @@ export class HomeComponent implements OnInit {
     this.fetchBlog();
   }
 
+  ngOnDestroy(): void {
+    document.body.style.overflow = '';
+  }
+
   get email(){
     return this.loginForm.controls['email']
   } 
 
   showButton() {
     this.showLogIn = !this.showLogIn;
+    if (this.showLogIn) {
+      document.body.style.overflow = 'hidden';
+  } else {
+      document.body.style.overflow = '';
+  }
   }
 
   logIn() {

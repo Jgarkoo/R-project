@@ -37,31 +37,43 @@
                 <h2 style="font-size: 25px; font-weight: bold;">
                     მზგავსი სტატიები
                 </h2>
+                <div class="boddy2-bottom2">
+                    <button id="bot-btn1" (click)="prevSlide()" >
+                        &#8249;
+                    </button>
+                    <button id="bot-btn2" (click)="nextSlide()">
+                        &#8250;
+                    </button>
+                </div>
             </div>
             <div class="boddy2-bottom3">
-                <div *ngFor="let relatedBlog of relatedBlogs">
-                    <img [src]="relatedBlog.image" style="width: 408px; height: 320px;" alt="Related Blog Image">
-                    <h4 style="padding-top: 10px; font-weight: bold;">
-                      {{ relatedBlog.author }}
-                    </h4>
-                    <h5 style="color: grey;">
-                      {{ relatedBlog.publish_date }}
-                    </h5>
-                    <h3 style="font-weight: bold;">
-                      {{ relatedBlog.title }}
-                    </h3>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                      <button *ngFor="let categoryOfBlogs of relatedBlog.categories" class="category"
-                        [ngStyle]="{'color': categoryOfBlogs.text_color, 
-                        'background-color': categoryOfBlogs.background_color
-                        }">
-                        {{ categoryOfBlogs.title }}
-                      </button>
+                <div style="display: flex; gap: 40px; overflow: hidden; width: 100%; padding: 0px 0px 0px 40px; ">
+                    <div *ngFor="let relatedBlog of relatedBlogs" 
+                    [ngStyle]="{'transform': 'translateX(-' + currentSlideIndex * 100 + '%)'}" 
+                    style="transition: transform 0.5s ease-in-out;">
+                        <img [src]="relatedBlog.image" style="width: 408px; height: 320px;" alt="Related Blog Image">
+                        <h4 style="padding-top: 10px; font-weight: bold;">
+                          {{ relatedBlog.author }}
+                        </h4>
+                        <h5 style="color: grey;">
+                          {{ relatedBlog.publish_date }}
+                        </h5>
+                        <h3 style="font-weight: bold;">
+                          {{ relatedBlog.title }}
+                        </h3>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                          <button *ngFor="let categoryOfBlogs of relatedBlog.categories" class="category"
+                            [ngStyle]="{'color': categoryOfBlogs.text_color, 
+                            'background-color': categoryOfBlogs.background_color
+                            }">
+                            {{ categoryOfBlogs.title }}
+                          </button>
+                        </div>
+                        <h4 style="padding: 10px 0px 0px 0px;">
+                          {{ relatedBlog.description }}
+                        </h4> 
+                      <a [routerLink]="['/blog', relatedBlog.id]"> სრულად ნახვა &#8599;</a> 
                     </div>
-                    <h4 style="padding: 10px 0px 0px 0px;">
-                      {{ relatedBlog.description }}
-                    </h4> 
-                  <a [routerLink]="['/blog', relatedBlog.id]"> სრულად ნახვა &#8599;</a> 
                 </div>
             </div>
         </div>
