@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { BlogService } from '../service/blog.service';
 import { Blog, categories } from '../model/blog';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-blog.component.html',
   styleUrls: ['./add-blog.component.scss']
 })
-export class AddBlogComponent implements OnInit {
+export class AddBlogComponent implements OnInit, OnDestroy {
 
   addBlogForm = new FormGroup ({
     author: new FormControl('',[Validators.required, Validators.minLength(4), Validators.pattern(/^[ა-ჰ]+ [ა-ჰ]+$/)]),
@@ -32,6 +32,15 @@ export class AddBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategory();
+    if (this.successMessage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  ngOnDestroy(): void {
+    document.body.style.overflow = '';    
   }
 
   addBlog(){
@@ -128,4 +137,8 @@ export class AddBlogComponent implements OnInit {
     return this.addBlogForm.controls['email']
   } 
   
+  get category(){
+    return this.addBlogForm.controls['categories'];
+  }
+
 } 

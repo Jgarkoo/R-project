@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <header>
         <img src="../assets/img/LOGO-02 3.png" style=" width: 150px; height: 24px; " alt="Logo-02">
     </header>
@@ -125,17 +125,24 @@
                     }"
                     >
                 </div>
-                <div style="display: flex; flex-direction: column; margin-left: 98px; margin-top: 20px;">
+                <div style="display: flex; flex-direction: column; margin: 20px 0px 0px 100px;">
                     <label style="font-weight: bold;">
                       კატეგორია *
                     </label>
-                    <mat-form-field>
-                        <mat-select placeholder="აირჩიეთ კატეგორია" formControlName="categories" multiple>
-                          <mat-option *ngFor="let category of categoriesList" [value]="category.id">
-                            {{ category.title }}
-                          </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                    <mat-select placeholder="აირჩიეთ კატეგორია" formControlName="categories" multiple
+                    [ngClass]="{
+                        'default-state': !category.touched,
+                        'invalid-state': category.touched && category.invalid,
+                        'valid-state': category.touched && category.valid
+                    }">
+                        <mat-option *ngFor="let category of categoriesList" [value]="category.id"
+                            [ngStyle]="{
+                            'color': category.text_color, 
+                            'background-color': category.background_color
+                            }">
+                                {{ category.title }}
+                        </mat-option>
+                    </mat-select>
                   </div>                  
                 <div style="display: flex; flex-direction: column; margin-top: 30px;">
                     <label style="font-weight: bold;">
@@ -167,16 +174,16 @@
                     გამოქვეყნება
                 </button>
             </div>
-            <div *ngIf="successMessage" class="accept-window">
-                <div class="lg-window">
-                    <button class="back-to-pg" (click)="hideButton()">
-                        x
-                    </button>
-                    <img src="../assets/img/tick-circle.png" alt="" style="margin-top: 20px;">
-                    <p style="font-size: 20px; font-weight: bold; margin-top: 20px;">ჩანაწი წარმატებით დაემატა</p>
-                    <button class="nav-loghmp-btn" (click)="navigateToLghmpg()">მთავარ გვერდზე დაბრუნება</button>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
+<div *ngIf="successMessage" class="accept-window">
+    <div class="lg-window">
+        <button class="back-to-pg" (click)="hideButton()">
+            x
+        </button>
+        <img src="../assets/img/tick-circle.png" alt="" style="margin-top: 20px;">
+        <p style="font-size: 20px; font-weight: bold; margin-top: 20px;">ჩანაწი წარმატებით დაემატა</p>
+        <button class="nav-loghmp-btn" (click)="navigateToLghmpg()">მთავარ გვერდზე დაბრუნება</button>
     </div>
 </div>
